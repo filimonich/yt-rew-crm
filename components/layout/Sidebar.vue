@@ -5,9 +5,9 @@
     <NuxtLink to="/" class="mb-10 block">
       <NuxtImg src="/logo.svg" alt="logo" width="100px" class="mx-auto" />
     </NuxtLink>
-
-    <div>
-      <UiButton>Click</UiButton>
-    </div>
+    <button class="absolute top-2 right-3 transition-colors hover:text-primary">
+      <Icon name="line-md:log-out" size="20" />
+    </button>
+    <div></div>
   </aside>
 </template>

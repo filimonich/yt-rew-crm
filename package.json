@@ -16,6 +16,7 @@
     "appwrite": "^11.0.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
+    "dayjs": "^1.11.10",
     "nuxt": "^3.10.3",
     "pinia": "^2.1.7",
     "radix-vue": "^1.5.1",

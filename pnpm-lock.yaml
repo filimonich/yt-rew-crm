@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@pinia/nuxt':
+    specifier: ^0.5.1
+    version: 0.5.1(vue@3.4.21)
   '@radix-icons/vue':
     specifier: ^1.0.0
     version: 1.0.0(vue@3.4.21)
@@ -12,8 +15,8 @@ dependencies:
     specifier: ^10.9.0
     version: 10.9.0(vue@3.4.21)
   appwrite:
-    specifier: ^14.0.0
-    version: 14.0.0
+    specifier: ^11.0.1
+    version: 11.0.1
   class-variance-authority:
     specifier: ^0.7.0
     version: 0.7.0
@@ -23,6 +26,9 @@ dependencies:
   nuxt:
     specifier: ^3.10.3
     version: 3.10.3(vite@5.1.5)
+  pinia:
+    specifier: ^2.1.7
+    version: 2.1.7(vue@3.4.21)
   radix-vue:
     specifier: ^1.5.1
     version: 1.5.1(vue@3.4.21)
@@ -32,6 +38,9 @@ dependencies:
   tailwindcss-animate:
     specifier: ^1.0.7
     version: 1.0.7(tailwindcss@3.4.1)
+  uuid:
+    specifier: ^9.0.1
+    version: 9.0.1
   vue:
     specifier: ^3.4.19
     version: 3.4.21
@@ -49,6 +58,9 @@ devDependencies:
   '@nuxtjs/tailwindcss':
     specifier: ^6.11.4
     version: 6.11.4
+  '@types/uuid':
+    specifier: ^9.0.8
+    version: 9.0.8
   autoprefixer:
     specifier: ^10.4.18
     version: 10.4.18(postcss@8.4.35)
@@ -1553,6 +1565,19 @@ packages:
       '@parcel/watcher-win32-ia32': 2.4.1
       '@parcel/watcher-win32-x64': 2.4.1
 
+  /@pinia/nuxt@0.5.1(vue@3.4.21):
+    resolution: {integrity: sha512-6wT6TqY81n+7/x3Yhf0yfaJVKkZU42AGqOR0T3+UvChcaOJhSma7OWPN64v+ptYlznat+fS1VTwNAcbi2lzHnw==}
+    dependencies:
+      '@nuxt/kit': 3.10.3
+      pinia: 2.1.7(vue@3.4.21)
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - rollup
+      - supports-color
+      - typescript
+      - vue
+    dev: false
+
   /@pkgjs/parseargs@0.11.0:
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
     engines: {node: '>=14'}
@@ -1864,6 +1889,10 @@ packages:
 
   /@types/resolve@1.20.2:
     resolution: {integrity: sha512-60BCwRFOZCQhDncwQdxxeOEEkbc5dIMccYLwbxsS4TUNeVECQ/pBJ0j09mrHOl/JJvpRPGwO9SvE4nR2Nb/a4Q==}
+
+  /@types/uuid@9.0.8:
+    resolution: {integrity: sha512-jg+97EGIcY9AGHJJRaaPVgetKDsrTgbRjQ5Msgjh/DQKEFl0DtyRr/VCOyD1T2R1MNeWPK/u7JoGhlDZnKBAfA==}
+    dev: true
 
   /@types/web-bluetooth@0.0.20:
     resolution: {integrity: sha512-g9gZnnXVq7gM7v3tJCWV/qw7w+KeOlSHAhgF9RytFyifW6AF61hdT2ucrYhPq9hLs5JIryeupHV3qGk95dH9ow==}
@@ -2192,8 +2221,8 @@ packages:
       normalize-path: 3.0.0
       picomatch: 2.3.1
 
-  /appwrite@14.0.0:
-    resolution: {integrity: sha512-8X0wbA0JX51f2DVSbpYTV2fN5f6vSGYpWBVSXCKfnNPMiBgeBwcDxuLDxnHUApAsSIDUkfZomeJWE8Q2Rbnpbw==}
+  /appwrite@11.0.1:
+    resolution: {integrity: sha512-o8ag5sc/KwpwB5MGswI7DdvStMjz3PKYmN1RyfLwofk7lQUbHBkY/pMB6zgk21Y5bbQRX+Ca4MbbSOMV+VC1cQ==}
     dependencies:
       cross-fetch: 3.1.5
       isomorphic-form-data: 2.0.0
@@ -5047,6 +5076,23 @@ packages:
     resolution: {integrity: sha512-udgsAY+fTnvv7kI7aaxbqwWNb0AHiB0qBO89PZKPkoTmGOgdbrHDKD+0B2X4uTfJ/FT1R09r9gTsjUjNJotuog==}
     engines: {node: '>=0.10.0'}
 
+  /pinia@2.1.7(vue@3.4.21):
+    resolution: {integrity: sha512-+C2AHFtcFqjPih0zpYuvof37SFxMQ7OEG2zV9jRI12i9BOy3YQVAHwdKtyyc8pDcDyIc33WCIsZaCFWU7WWxGQ==}
+    peerDependencies:
+      '@vue/composition-api': ^1.4.0
+      typescript: '>=4.4.4'
+      vue: ^2.6.14 || ^3.3.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+      typescript:
+        optional: true
+    dependencies:
+      '@vue/devtools-api': 6.6.1
+      vue: 3.4.21
+      vue-demi: 0.14.7(vue@3.4.21)
+    dev: false
+
   /pirates@4.0.6:
     resolution: {integrity: sha512-saLsH7WeYYPiD25LDuLRRY/i+6HaPYr6G1OUlN39otzkSTxKnubR9RTxS3/Kk50s1g2JTgFwWQDQyplC5/SHZg==}
     engines: {node: '>= 6'}
@@ -6530,6 +6576,11 @@ packages:
 
   /util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
+
+  /uuid@9.0.1:
+    resolution: {integrity: sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==}
+    hasBin: true
+    dev: false
 
   /validate-npm-package-license@3.0.4:
     resolution: {integrity: sha512-DpKm2Ui/xN7/HQKCtpZxoRWBhZ9Z0kqtygG8XCgNQ8ZlDnxuQmWhj566j8fN4Cu3/JmbhsDo7fcAJq4s9h27Ew==}

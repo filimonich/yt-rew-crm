@@ -21,4 +21,3 @@ withDefaults(defineProps<Props>(), {
     <slot />
   </component>
 </template>
-~/utils/utils

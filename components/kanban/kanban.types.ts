@@ -12,5 +12,5 @@ export interface ICard {
 export interface IColumn {
   id: EnumStatus;
   name: string;
-  cards: ICard[];
+  items: ICard[];
 }

@@ -10,7 +10,7 @@ onMounted(async () => {
   try {
     const user = await account.get();
     if (user) store.set(user);
-  } catch (error) {
+  } catch (e) {
     router.push("/login");
   } finally {
     isLoadingStore.set(false);

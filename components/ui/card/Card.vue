@@ -31,7 +31,7 @@ const props = defineProps<{
   }
   to {
     @apply border-transparent;
-    transform: scale(1.0) translateY(0);
+    transform: scale(1) translateY(0);
     opacity: 1;
   }
 }

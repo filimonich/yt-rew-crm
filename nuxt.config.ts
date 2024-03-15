@@ -1,8 +1,8 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: [
+    "@nuxt/ui",
     "@nuxt/image",
-    "@nuxtjs/tailwindcss",
     "shadcn-nuxt",
     [
       "@nuxtjs/google-fonts",

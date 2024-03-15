@@ -13,22 +13,23 @@ export function useKanbanQuery() {
         ...col,
         items: [],
       }));
+
       const deals = data.documents as unknown as IDeal[];
-      console.log(deals, newBoard);
 
       for (const deal of deals) {
-        const column = newBoard.find((col) => col.id === deal.status);
-        if (column) {
-          column.items.push({
+        const col = newBoard.find((col) => col.id === deal.status);
+        if (col) {
+          col.items.push({
             $createdAt: deal.$createdAt,
             id: deal.$id,
             name: deal.name,
             price: deal.price,
             companyName: deal.customer.name,
-            status: deal.status,
+            status: col.name,
           });
         }
       }
+
       return newBoard;
     },
   });

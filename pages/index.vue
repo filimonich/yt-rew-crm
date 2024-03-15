@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { COLLECTION_DEALS, DB_ID } from "~/app.constants";
+import { generateColumnStyle } from "@/components/kanban/generate-gradient";
 import { useKanbanQuery } from "@/components/kanban/useKanbanQuery";
 import { convertCurrency } from "@/utils/convertCurrency";
 import { useMutation } from "@tanstack/vue-query";
 import dayjs from "dayjs";
-import { generateColumnStyle } from "~/components/kanban/generate-gradient";
+import { COLLECTION_DEALS, DB_ID } from "~/app.constants";
 import type { ICard, IColumn } from "~/components/kanban/kanban.types";
+import { useDealSlideStore } from "~/store/deal-slide.store";
 import type { EnumStatus } from "~/types/deals.types";
 
 useSeoMeta({
@@ -15,6 +16,7 @@ useSeoMeta({
 const dragCardRef = ref<ICard | null>(null);
 const sourceColumnRef = ref<IColumn | null>(null);
 const { data, isLoading, refetch } = useKanbanQuery();
+const store = useDealSlideStore();
 
 type TypeMutationVariables = {
   docId: string;
@@ -43,14 +45,14 @@ function handleDragOver(event: DragEvent) {
 
 function handleDrop(targetColumn: IColumn) {
   if (dragCardRef.value && sourceColumnRef.value) {
-    mutate({ docId: dragCardRef.value?.id, status: targetColumn.id });
+    mutate({ docId: dragCardRef.value.id, status: targetColumn.id });
   }
 }
 </script>
 
 <template>
   <div class="p-10">
-    <h1 class="font-bold text-2xl mb-10">CRM System YT</h1>
+    <h1 class="font-bold text-2xl mb-10">CRM System by RED Group</h1>
     <div v-if="isLoading">Loading...</div>
     <div v-else>
       <div class="grid grid-cols-5 gap-16">
@@ -72,18 +74,20 @@ function handleDrop(targetColumn: IColumn) {
             <UiCard
               v-for="card in column.items"
               :key="card.id"
-              class="mb-6"
+              class="mb-5"
               draggable="true"
               @dragstart="() => handleDragStart(card, column)"
             >
-              <UiCardHeader role="button">
+              <UiCardHeader role="button" @click="store.set(card)">
                 <UiCardTitle>{{ card.name }}</UiCardTitle>
-                <UiCardDescription>{{
+
+                <UiCardDescription class="mt-2 block">{{
                   convertCurrency(card.price)
                 }}</UiCardDescription>
               </UiCardHeader>
-              <UiCardContent class="text-sm"
-                >Компания {{ card.companyName }}</UiCardContent
+              <UiCardContent class="text-xs">
+                <div>Компания</div>
+                {{ card.companyName }}</UiCardContent
               >
               <UiCardFooter>
                 {{ dayjs(card.$createdAt).format("DD MMMM YYYY") }}
@@ -92,6 +96,7 @@ function handleDrop(targetColumn: IColumn) {
           </div>
         </div>
       </div>
+      <KanbanSlideover />
     </div>
   </div>
 </template>

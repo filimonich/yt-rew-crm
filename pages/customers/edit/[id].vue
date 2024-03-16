@@ -27,15 +27,32 @@ const { data, isSuccess } = useQuery({
   queryFn: () => DB.getDocument(DB_ID, COLLECTION_CUSTOMERS, customerId),
 });
 
-watch(isSuccess, () => {
-  const initialData = data.value as unknown as ICustomerFormState;
+const setInitialValues = (customerData: ICustomerFormState) => {
   setValues({
-    email: initialData.email,
-    avatar_url: initialData.avatar_url,
-    from_source: initialData.from_source || "",
-    name: initialData.name,
+    email: customerData.email,
+    avatar_url: customerData.avatar_url,
+    from_source: customerData.from_source || "",
+    name: customerData.name,
+  });
+};
+
+onMounted(() => {
+  watchEffect(() => {
+    if (isSuccess.value) {
+      setInitialValues(data.value as unknown as ICustomerFormState);
+    }
   });
 });
+
+watch(
+  () => data.value?.avatar_url,
+  (newAvatarUrl) => {
+    if (newAvatarUrl) {
+      setFieldValue("avatar_url", newAvatarUrl);
+    }
+  },
+  { immediate: true }
+);
 
 const [name, nameAttrs] = defineField("name");
 const [email, emailAttrs] = defineField("email");
